@@ -56,6 +56,49 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 ```
 Your answer...
 ```
+The two architectures of CUSTOMER_ADDRESS design will be as follows:
+
+Type 1: Just overwrites the address (no history kept)
+  The table will be as follows:
+
+ CUSTOMER_ADDRESS
+-----------------
+  customer_id      (PK),
+  street_address,
+  city,
+  province,
+  postal_code,
+  country,
+  last_updated_date 
+
+  Characteristics:
+
+  - One row per customer.
+  - When a customer moves, the same row is updated using UPDATE Command
+  - No old address is kept, the previous value is lost.
+
+Type 2: Retains all historical addresses (with history over time)
+  for Type 2 each time the customer moves, a new row is inserted and which address is current is marked.
+  The table will be as follows:
+
+CUSTOMER_ADDRESS
+----------------
+customer_address_id   (PK),
+customer_id           (FK),
+street_address,
+city,
+province,
+postal_code,
+country,
+effective_start_date,
+effective_end_date,    
+is_current            -- BOOLEAN (e.g. TRUE for current address)
+
+Characteristics:
+
+- Multiple rows per customer and the valid one is marked as 'TRUE'
+- When a customer moves, a new row is inserted using INSERT Command
+- History of address change is preserved
 
 ***
 
