@@ -58,7 +58,7 @@ Your answer...
 ```
 The two architectures of CUSTOMER_ADDRESS design will be as follows:
 
-- Type 1: Just overwrites the address (no history kept)
+Type 1: Just overwrites the address (no history kept)
   The table will be as follows:
 
  CUSTOMER_ADDRESS
@@ -77,7 +77,7 @@ The two architectures of CUSTOMER_ADDRESS design will be as follows:
   - When a customer moves, the same row is updated using UPDATE Command
   - No old address is kept, the previous value is lost.
 
-- Type 2: Retains all historical addresses (with history over time)
+Type 2: Retains all historical addresses (with history over time)
   for Type 2 each time the customer moves, a new row is inserted and which address is current is marked.
   The table will be as follows:
 
