@@ -61,14 +61,14 @@ The two architectures of CUSTOMER_ADDRESS design will be as follows:
 - Type 1: Just overwrites the address (no history kept)
   The table will be as follows:
 
-  CUSTOMER_ADDRESS
-  ----------------
-  customer_id      (PK)
-  street_address
-  city
-  province
-  postal_code
-  country
+ CUSTOMER_ADDRESS
+-----------------
+  customer_id      (PK),
+  street_address,
+  city,
+  province,
+  postal_code,
+  country,
   last_updated_date 
 
   Characteristics:
@@ -79,18 +79,19 @@ The two architectures of CUSTOMER_ADDRESS design will be as follows:
 
 - Type 2: Retains all historical addresses (with history over time)
   for Type 2 each time the customer moves, a new row is inserted and which address is current is marked.
+  The table will be as follows:
 
 CUSTOMER_ADDRESS
 ----------------
-customer_address_id   (PK)
-customer_id           (FK)
-street_address
-city
-province
-postal_code
-country
-effective_start_date
-effective_end_date    
+customer_address_id   (PK),
+customer_id           (FK),
+street_address,
+city,
+province,
+postal_code,
+country,
+effective_start_date,
+effective_end_date,    
 is_current            -- BOOLEAN (e.g. TRUE for current address)
 
 Characteristics:
